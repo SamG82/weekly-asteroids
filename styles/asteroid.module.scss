@@ -1,0 +1,177 @@
+@use 'common';
+@use 'theme';
+
+.date-info {
+    @include common.regular-flex(row, center, center, 0);
+}
+
+.heading-text {
+    margin: 2rem 0;
+    @include common.regular-flex(row, flex-start, center, 1.5rem);
+}
+
+.heading-text a {
+    padding: 10px 20px;
+    background: theme.$tertiary-background;
+    border-radius: 15px;
+    text-decoration: none;
+    font-size: 2rem;
+    color: theme.$standout-color;
+}
+
+.heading-text a:hover {
+    background-color: theme.$secondary-background
+}
+
+.asteroid-list {
+    display: flex;
+    background-color: theme.$secondary-background;
+    border-radius: 15px;
+    overflow: hidden;
+    width: 55vw;
+    height: 70vh;
+
+    filter: drop-shadow(0px 0px 2px theme.$standout-color);
+}
+
+.asteroid-list-sidebar {
+    @include common.regular-flex(column);
+    overflow-y: auto;
+}
+
+.asteroid-button {
+    border: none;
+    cursor: pointer;
+    font-size: 1.3rem;
+    color: theme.$secondary-font;
+    padding: 1.3rem 2rem;
+    flex: 1;
+    transition: 0.35s;
+    background-color: theme.$tertiary-background;
+}
+
+.asteroid-button-active {
+    @extend .asteroid-button;
+    color: theme.$standout-color;
+    background-color: theme.$secondary-background;
+}
+
+.asteroid-button:hover {
+    background-color: theme.$secondary-background;
+}
+
+.asteroid-list-sidebar::-webkit-scrollbar {
+    width: 10px;
+}
+
+.asteroid-list-sidebar::-webkit-scrollbar-thumb {
+    background-color: theme.$secondary-font;
+}
+
+.asteroid {
+    @include common.regular-flex(column, flex-start, center);
+    flex: 1;
+    color: theme.$secondary-font;
+}
+
+.asteroid-name {
+    color: theme.$standout-color;
+    @include common.centered-flex-img(2rem, 3rem);
+    margin: 2rem 0;
+
+    @keyframes icon-spin {
+        0% { transform: rotate(0deg);}
+        100% {transform: rotate(359deg);}
+    }
+
+    img {
+        animation: icon-spin 6s linear infinite;
+    }
+}
+
+.asteroid-features {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 3rem;
+    img {
+        width: 2.5rem;
+        height: 2.5rem;
+    }
+}
+
+.feature {
+    @include common.regular-flex(column, flex-start, center, 1rem);
+}
+
+.approach-details {
+    flex: 1;
+    @include common.regular-flex(column, center, center);
+
+}
+
+.approach-time-label {
+    @include common.centered-flex-img(0.6rem, 2rem);
+    font-size: 1.5rem;
+}
+
+.time {
+    color: #00B08D;
+    font-size: 4rem;
+    @include common.centered-flex-img(1rem, 2rem);
+}
+
+.hazard-logo {
+    width: 3rem;
+    height: 3rem;
+}
+@media only screen and (max-width: 1300px) {
+    .asteroid-list {
+        flex-direction: column;
+    }
+    .asteroid-list-sidebar {
+        flex-direction: row;
+        overflow-x: scroll;
+        overflow-y: hidden;
+    }
+
+}
+
+@media only screen and (max-width: 1050px) {
+    .asteroid-features {
+        font-size: 0.8rem;
+    }
+}
+
+@media only screen and (max-width: 1020px) {
+    .heading-text {
+        justify-content: space-between;
+    }
+}
+
+@media only screen and (max-width: 900px) {
+    .asteroid-features {
+        font-size: 0.6rem;
+    }
+    .approach-time-label {
+        font-size: 0.8rem;
+    }
+}
+
+@media only screen and (max-width: 700px) {
+    .main {
+        width: 90%;
+        height: 77vh;
+    }
+    .asteroid-list {
+        width: 100%;
+        height: 100%;
+    }
+    .asteroid-name {
+        font-size: 0.9rem;
+        img { width: 3rem; }
+    }
+
+    .asteroid-list-sidebar::-webkit-scrollbar-thumb {
+        border-radius: 15px;
+    }
+}

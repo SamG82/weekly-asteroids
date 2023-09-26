@@ -1,0 +1,13 @@
+@use 'theme' as theme;
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+html {
+    background-color: theme.$main-background;
+    color: theme.$main-font;
+}
+
